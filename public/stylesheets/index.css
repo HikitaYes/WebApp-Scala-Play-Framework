@@ -6,15 +6,16 @@ html, body {
 
 @font-face {
 	font-family: "A Love Of Thunder";
-	src: url("font/ALoveOfThunder.ttf");
+	src: url("../font/ALoveOfThunder.ttf");
+
 }
 @font-face {
 	font-family: "Handelson Six CYR";
-	src: url("font/Handelson Six_CYR.otf");
+	src: url("../font/Handelson Six_CYR.otf");
 }
 @font-face {
 	font-family: "Fulbo Argenta";
-	src: url("font/Fulbo Argenta.otf");
+	src: url("../font/Fulbo Argenta.otf");
 }
 
 .background-img img {
