@@ -1,9 +1,9 @@
-@(title: String)(content: Html)
+@(content: Html)
 
 <!DOCTYPE html>
 <html>
     <head>
-        <title>@title</title>
+        <title>Кабачок "У Солодушкина"</title>
         <link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("stylesheets/index.css")">
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/icon.png")">
     </head>
@@ -21,6 +21,7 @@
                 </ul>
             </nav>
         </header>
+        <div class="header-buffer"></div>
         @content
     </body>
 </html>
