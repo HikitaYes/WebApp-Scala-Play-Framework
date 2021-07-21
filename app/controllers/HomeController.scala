@@ -39,7 +39,7 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
       val username = args("username").head
       val password = args("password").head
       if (UsersModel.createUser(username, password)) {
-        Redirect(routes.HomeController.auth).flashing("success" -> "Вы зарегистрировали свой аккаунт")
+        Redirect(routes.HomeController.auth).flashing("success" -> "Пользователь успешно зарегистрирован")
       } else {
         Redirect(routes.HomeController.auth).flashing("error" -> "Пользователь с таким именем уже существует")
       }
