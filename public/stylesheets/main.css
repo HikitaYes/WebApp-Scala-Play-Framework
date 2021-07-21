@@ -41,14 +41,29 @@ html, body {
 	margin-left: 50px;
 }
 .header .navigation ul {
+    display: flex;
+	align-items: center;
+	position: relative;
 	margin: 0;
 	padding: 0;
 	list-style-type: none;
 }
 .header .navigation ul li {
     display: inline-block;
-    margin: 12px;
+    margin: 13px;
+}
+.header .navigation ul li:last-child {
+	position: absolute;
+	right: 0;
 
+	margin-right: 50px;
+	padding: 7px;
+	border-radius: 7px;
+
+	background-color: rgba(250, 250, 250);
+}
+.header .navigation ul li:last-child:hover {
+	background-color: rgba(210, 210, 210);
 }
 .header .navigation ul li a {
 	text-decoration: none;
@@ -58,7 +73,12 @@ html, body {
 	font-size: 21px;
     text-transform: uppercase;
     letter-spacing: 0.1px;
-
+}
+.header .navigation ul li:last-child a {
+	color: black;
+	font-size: 22px;
+}
+.header .navigation ul li a {
     position: relative;
 }
 .header .navigation ul li a:after {
@@ -81,6 +101,10 @@ html, body {
 .header .navigation ul li a:hover:after {
 	width: 100%;
 }
+.header .navigation ul li:last-child a:hover:after {
+	width: 0%;
+}
+
 
 .header-buffer {
 	height: 12%;
