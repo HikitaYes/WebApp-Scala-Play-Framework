@@ -1,31 +1,41 @@
 @()(implicit request: RequestHeader, flash: Flash)
 
 @main("auth") {
+    <div class="background-img">
+        <img src="@routes.Assets.versioned("images/background2.jpg")" alt="background image">
+    </div>
     <main class="main">
-        <br>
-        <br>
-        <br>
-        <div class="information">
-            @flash.get("error")
-            @flash.get("success")
+        <div class="container">
+            <input type="radio" name="switch" id="login" checked="">
+            <input type="radio" name="switch" id="register">
+            <h1 class="title">
+                <label class="login" for="login">Войти</label>
+                |
+                <label class="register" for="register">Регистрация</label>
+            </h1>
+
+            <div class="info">
+                <h3 class="success">@flash.get("success")</h3>
+                <h3 class="error">@flash.get("error")</h3>
+            </div>
+
+            <div class="data">
+                <form class="login" method="post" action="@routes.HomeController.login">
+                    @helper.CSRF.formField
+                    <p>Укажите ваши данные:</p>
+                    <input type="text" name="username" placeholder="Ваше имя" required="">
+                    <input type="password" name="password" placeholder="Пароль" required="">
+                    <input type="submit" name="">
+                </form>
+                <form class="register" method="post" action="@routes.HomeController.register">
+                    @helper.CSRF.formField
+                    <p>Укажите ваши данные:</p>
+                    <input type="text" name="username" placeholder="Введите имя" required="">
+                    <input type="password" name="password" placeholder="Придумайте пароль" required="">
+
+                    <input type="submit" name="">
+                </form>
+            </div>
         </div>
-        <form method="post" action="@routes.HomeController.login">
-            @helper.CSRF.formField
-            Имя: <input type="text" name="username">
-            <br>
-            Пароль: <input type="password" name="password">
-            <br>
-            <input type="submit">
-        </form>
-        <br>
-        <br>
-        <form method="post" action="@routes.HomeController.register">
-            @helper.CSRF.formField
-            Имя: <input type="text" name="username">
-            <br>
-            Пароль: <input type="password" name="password">
-            <br>
-            <input type="submit">
-        </form>
     </main>
 }
