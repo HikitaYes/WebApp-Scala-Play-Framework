@@ -19,8 +19,7 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
   }
 
   def auth() = Action { implicit request =>
-    val usernameOption = request.session.get("username")
-    Ok(views.html.auth(usernameOption))
+    Ok(views.html.auth())
   }
 
   def login = Action { implicit request =>
