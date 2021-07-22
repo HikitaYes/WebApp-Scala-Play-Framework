@@ -10,16 +10,17 @@ import play.api.mvc._
 @Singleton
 class HomeController @Inject()(val controllerComponents: ControllerComponents) extends BaseController {
 
-  def index = Action { implicit request: Request[AnyContent] =>
+  def index = Action { implicit request =>
     Ok(views.html.index())
   }
 
-  def menu = Action {
+  def menu = Action { implicit request =>
     Ok(views.html.menu())
   }
 
-  def auth = Action { implicit request =>
-    Ok(views.html.auth())
+  def auth() = Action { implicit request =>
+    val usernameOption = request.session.get("username")
+    Ok(views.html.auth(usernameOption))
   }
 
   def login = Action { implicit request =>
@@ -27,7 +28,7 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
       val username = args("username").head
       val password = args("password").head
       if (UsersModel.validateUser(username, password)) {
-        Redirect(routes.HomeController.auth).flashing("success" -> "Вы вошли в свой аккаунт")
+        Redirect(routes.HomeController.auth).withSession("username" -> username).flashing("success" -> "Вы вошли в свой аккаунт")
       } else {
         Redirect(routes.HomeController.auth).flashing("error" -> "Неправильный логин или пароль")
       }
@@ -44,5 +45,9 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
         Redirect(routes.HomeController.auth).flashing("error" -> "Пользователь с таким именем уже существует")
       }
     }.getOrElse(Redirect(routes.HomeController.auth))
+  }
+
+  def logout = Action {
+    Redirect(routes.HomeController.auth).withNewSession
   }
 }

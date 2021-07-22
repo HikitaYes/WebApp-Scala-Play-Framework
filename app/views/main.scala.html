@@ -1,4 +1,5 @@
-@(stylesheetName: String)(content: Html)
+@(stylesheetName: String)(content: Html)(implicit session: Session)
+
 
 <!DOCTYPE html>
 <html>
@@ -19,7 +20,14 @@
                     <li><a href="/menu">Меню</a></li>
                     <li><a href="/booking">Забронировать столик</a></li>
                     <li><a href="/about">О нас</a></li>
-                    <li><a href="/auth">Войти / Регистрация</a></li>
+                    @name = @{session.get("username")}
+                    @if(name.isEmpty) {
+                        <li><a href="/auth">Войти / Регистрация</a></li>
+                    } else {
+<!--                        <li><a href="/logout">@name</a><img src="@routes.Assets.versioned("images/account.png")" alt="account icon" width="18" height="17"></li>-->
+<!--                        <a href="/logout"><li>@name<img src="@routes.Assets.versioned("images/account.png")" alt="account icon" width="18" height="17"></li></a>-->
+                        <a href="/logout"><li title="Выйти из аккаунта">@name<img src="@routes.Assets.versioned("images/account.png")" alt="account icon" width="18" height="17"></li></a>
+                    }
                 </ul>
             </nav>
         </header>

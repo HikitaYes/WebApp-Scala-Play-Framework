@@ -52,6 +52,10 @@ html, body {
     display: inline-block;
     margin: 13px;
 }
+.header .navigation ul > a {
+	display: flex;
+	align-items: center;
+}
 .header .navigation ul li:last-child {
 	position: absolute;
 	right: 0;
@@ -65,7 +69,7 @@ html, body {
 .header .navigation ul li:last-child:hover {
 	background-color: rgba(210, 210, 210);
 }
-.header .navigation ul li a {
+.header .navigation ul a {
 	text-decoration: none;
 	color: white;
 
@@ -74,7 +78,7 @@ html, body {
     text-transform: uppercase;
     letter-spacing: 0.1px;
 }
-.header .navigation ul li:last-child a {
+.header .navigation ul li:last-child, .header .navigation ul li:last-child a {
 	color: black;
 	font-size: 22px;
 }
@@ -104,7 +108,15 @@ html, body {
 .header .navigation ul li:last-child a:hover:after {
 	width: 0%;
 }
-
+/*for account*/
+.header .navigation ul li:last-child {
+	display: flex;
+	align-items: center;
+}
+.header .navigation ul li:last-child img {
+	margin-left: 5px;
+	margin-bottom: 1px;
+}
 
 .header-buffer {
 	height: 16%;
