@@ -1,12 +1,11 @@
 # Routes
-# An example controller showing a sample home page
 GET     /                           controllers.HomeController.index
 GET     /menu                       controllers.HomeController.menu
 GET     /auth                       controllers.HomeController.auth
 
-# Map static resources from the /public folder to the /assets URL path
-GET     /public/*file               controllers.Assets.versioned(path="/public", file: Asset)
-
 POST    /login                      controllers.HomeController.login
 GET     /logout                     controllers.HomeController.logout
 POST    /register                   controllers.HomeController.register
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /public/*file               controllers.Assets.versioned(path="/public", file: Asset)
