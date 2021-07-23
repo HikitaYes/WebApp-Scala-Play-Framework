@@ -24,8 +24,6 @@
                     @if(name.isEmpty) {
                         <li><a href="/auth">Войти / Регистрация</a></li>
                     } else {
-<!--                        <li><a href="/logout">@name</a><img src="@routes.Assets.versioned("images/account.png")" alt="account icon" width="18" height="17"></li>-->
-<!--                        <a href="/logout"><li>@name<img src="@routes.Assets.versioned("images/account.png")" alt="account icon" width="18" height="17"></li></a>-->
                         <a href="/logout"><li title="Выйти из аккаунта">@name<img src="@routes.Assets.versioned("images/account.png")" alt="account icon" width="18" height="17"></li></a>
                     }
                 </ul>
