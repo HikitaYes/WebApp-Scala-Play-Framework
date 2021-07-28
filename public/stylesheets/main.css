@@ -4,20 +4,6 @@ html, body {
 	margin: 0;
 }
 
-@font-face {
-	font-family: "A Love Of Thunder";
-	src: url("../fonts/ALoveOfThunder.ttf");
-
-}
-@font-face {
-	font-family: "Handelson Six CYR";
-	src: url("../fonts/Handelson Six_CYR.otf");
-}
-@font-face {
-	font-family: "Fulbo Argenta";
-	src: url("../fonts/Fulbo Argenta.otf");
-}
-
 .header {
 	display: flex;
 	align-items: center;
