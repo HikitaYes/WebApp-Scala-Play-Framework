@@ -1,14 +1,20 @@
 package controllers
 
-import models.UsersModel
-
 import javax.inject._
+
 import play.api._
 import play.api.mvc._
+import models.UsersModel
+
+import play.api.db.slick.{DatabaseConfigProvider, HasDatabaseConfigProvider}
+import slick.jdbc.JdbcProfile
+import slick.jdbc.PostgresProfile.api._
+import scala.concurrent.ExecutionContext
 
 
 @Singleton
-class HomeController @Inject()(val controllerComponents: ControllerComponents) extends BaseController {
+class HomeController @Inject()(protected val dbConfigProvider: DatabaseConfigProvider, val controllerComponents: ControllerComponents)(implicit ec: ExecutionContext)
+  extends BaseController with HasDatabaseConfigProvider[JdbcProfile] {
 
   def index = Action { implicit request =>
     Ok(views.html.index())
