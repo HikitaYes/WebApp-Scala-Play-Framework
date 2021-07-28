@@ -1,6 +1,5 @@
 package models
 
-import scala.collection.mutable
 import slick.jdbc.PostgresProfile.api._
 
 import scala.concurrent.{ExecutionContext, Future}
@@ -16,5 +15,13 @@ class UsersModel(db: Database)(implicit ec: ExecutionContext) {
   def createUser(username: String, password: String): Future[Boolean] = {
     db.run(Users += UsersRow(-1, username, BCrypt.hashpw(password, BCrypt.gensalt())))
       .map(addCount => addCount > 0)
+  }
+
+  def getDishes: Future[Seq[DishesRow]] = {
+    db.run(
+      (for {
+        dish <- Dishes
+      } yield dish).result
+    )
   }
 }
