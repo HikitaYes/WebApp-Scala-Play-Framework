@@ -54,6 +54,16 @@
 	align-items: flex-start;
 }
 
+.container .info h3 {
+	margin-top: 30px;
+}
+.container .info .success {
+	color: rgba(120, 220, 120);
+}
+.container .info .error {
+	color: rgba(250, 70, 60);
+}
+
 .data input {
 	font-family: "Gilroy Regular";
 	font-size: 20px;

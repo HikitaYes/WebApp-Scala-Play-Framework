@@ -3,6 +3,7 @@ GET     /                           controllers.HomeController.index
 GET     /menu                       controllers.HomeController.menu
 GET     /auth                       controllers.HomeController.auth
 GET     /booking                    controllers.HomeController.booking
+POST    /booking                    controllers.HomeController.bookingPost
 
 POST    /login                      controllers.HomeController.login
 GET     /logout                     controllers.HomeController.logout

@@ -24,4 +24,16 @@ class Model(db: Database)(implicit ec: ExecutionContext) {
       } yield dish).result
     )
   }
+
+  def getFreeTable: Future[Seq[Int]] = {
+    db.run(Booking.sortBy(_.id).result)
+      .map(bookingRows => bookingRows.filter(_.idUser.isEmpty).map(_.id))
+  }
+
+  def setTableBooking(idTable: Int, phoneNumber: String, username: String) = {
+    db.run(Users.filter(_.username === username).map(_.phoneNumber).update(Some(phoneNumber)))
+    db.run(Users.filter(_.username === username).map(_.id).result).flatMap { ids =>
+      db.run(Booking.filter(_.id === idTable).map(_.idUser).update(Some(ids.head)))
+    }
+  }
 }

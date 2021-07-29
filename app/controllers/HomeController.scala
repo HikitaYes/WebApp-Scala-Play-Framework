@@ -63,10 +63,24 @@ class HomeController @Inject()(protected val dbConfigProvider: DatabaseConfigPro
     Redirect(routes.HomeController.auth).withNewSession
   }
 
-  def booking = Action { implicit request =>
+  def booking = Action.async { implicit request =>
     request.session.get("username").map { username =>
+      model.getFreeTable.map { tables =>
+        Ok(views.html.booking(tables))
+      }
+    }.getOrElse(Future.successful(Redirect(routes.HomeController.auth).flashing("error" -> "Сначала войдите или зарегистрируйтесь")))
+  }
 
-      Ok(views.html.booking())
+  def bookingPost = Action { implicit request =>
+    request.session.get("username").map { username =>
+      request.body.asFormUrlEncoded.map { args =>
+        val phoneNumber = args("phoneNumber").head
+        val table = args("table").head.substring(6).toInt
+
+        model.setTableBooking(table, phoneNumber, username)
+        Redirect(routes.HomeController.booking).flashing("success" -> "Столик успешно забронирован")
+
+      }.getOrElse(Redirect(routes.HomeController.booking).flashing("error" -> "При бронировании произошла ошибка"))
     }.getOrElse(Redirect(routes.HomeController.auth).flashing("error" -> "Сначала войдите или зарегистрируйтесь"))
   }
 }
