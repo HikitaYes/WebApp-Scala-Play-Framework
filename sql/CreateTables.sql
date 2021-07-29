@@ -15,7 +15,7 @@ CREATE TABLE dishes (
 );
 
 CREATE TABLE booking (
-    id SMALLINT PRIMARY KEY,
+    id INT PRIMARY KEY,
     id_user INT REFERENCES users
 );
 

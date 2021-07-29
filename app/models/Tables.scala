@@ -19,13 +19,13 @@ trait Tables {
   def ddl = schema
 
   /** Entity class storing rows of table Booking
-   *  @param id Database column id SqlType(int2), PrimaryKey
+   *  @param id Database column id SqlType(int4), PrimaryKey
    *  @param idUser Database column id_user SqlType(int4), Default(None) */
-  case class BookingRow(id: Short, idUser: Option[Int] = None)
+  case class BookingRow(id: Int, idUser: Option[Int] = None)
   /** GetResult implicit for fetching BookingRow objects using plain SQL queries */
-  implicit def GetResultBookingRow(implicit e0: GR[Short], e1: GR[Option[Int]]): GR[BookingRow] = GR{
+  implicit def GetResultBookingRow(implicit e0: GR[Int], e1: GR[Option[Int]]): GR[BookingRow] = GR{
     prs => import prs._
-    BookingRow.tupled((<<[Short], <<?[Int]))
+    BookingRow.tupled((<<[Int], <<?[Int]))
   }
   /** Table description of table booking. Objects of this class serve as prototypes for rows in queries. */
   class Booking(_tableTag: Tag) extends profile.api.Table[BookingRow](_tableTag, "booking") {
@@ -33,8 +33,8 @@ trait Tables {
     /** Maps whole row to an option. Useful for outer joins. */
     def ? = ((Rep.Some(id), idUser)).shaped.<>({r=>import r._; _1.map(_=> BookingRow.tupled((_1.get, _2)))}, (_:Any) =>  throw new Exception("Inserting into ? projection not supported."))
 
-    /** Database column id SqlType(int2), PrimaryKey */
-    val id: Rep[Short] = column[Short]("id", O.PrimaryKey)
+    /** Database column id SqlType(int4), PrimaryKey */
+    val id: Rep[Int] = column[Int]("id", O.PrimaryKey)
     /** Database column id_user SqlType(int4), Default(None) */
     val idUser: Rep[Option[Int]] = column[Option[Int]]("id_user", O.Default(None))
 
