@@ -83,7 +83,7 @@ trait Tables {
    *  @param id Database column id SqlType(serial), AutoInc, PrimaryKey
    *  @param username Database column username SqlType(varchar), Length(20,true)
    *  @param password Database column password SqlType(varchar), Length(100,true)
-   *  @param phoneNumber Database column phone_number SqlType(varchar), Length(10,true), Default(None) */
+   *  @param phoneNumber Database column phone_number SqlType(varchar), Length(18,true), Default(None) */
   case class UsersRow(id: Int, username: String, password: String, phoneNumber: Option[String] = None)
   /** GetResult implicit for fetching UsersRow objects using plain SQL queries */
   implicit def GetResultUsersRow(implicit e0: GR[Int], e1: GR[String], e2: GR[Option[String]]): GR[UsersRow] = GR{
@@ -102,8 +102,8 @@ trait Tables {
     val username: Rep[String] = column[String]("username", O.Length(20,varying=true))
     /** Database column password SqlType(varchar), Length(100,true) */
     val password: Rep[String] = column[String]("password", O.Length(100,varying=true))
-    /** Database column phone_number SqlType(varchar), Length(10,true), Default(None) */
-    val phoneNumber: Rep[Option[String]] = column[Option[String]]("phone_number", O.Length(10,varying=true), O.Default(None))
+    /** Database column phone_number SqlType(varchar), Length(18,true), Default(None) */
+    val phoneNumber: Rep[Option[String]] = column[Option[String]]("phone_number", O.Length(18,varying=true), O.Default(None))
   }
   /** Collection-like TableQuery object for table Users */
   lazy val Users = new TableQuery(tag => new Users(tag))
