@@ -7,14 +7,22 @@ import models.Tables._
 import org.mindrot.jbcrypt.BCrypt
 
 class Model(db: Database)(implicit ec: ExecutionContext) {
+  private def findUser(username: String) = {
+    db.run(Users.filter(_.username === username).result)
+  }
+
   def validateUser(username: String, password: String): Future[Boolean] = {
-    val matches = db.run(Users.filter(_.username === username).result)
+    val matches = findUser(username)
     matches.map(_.exists(userRow => BCrypt.checkpw(password, userRow.password)))
   }
 
   def createUser(username: String, password: String): Future[Boolean] = {
-    db.run(Users += UsersRow(-1, username, BCrypt.hashpw(password, BCrypt.gensalt())))
-      .map(addCount => addCount > 0)
+    findUser(username).map(_.isEmpty).flatMap { isNameFree =>
+      if (isNameFree)
+        db.run(Users += UsersRow(-1, username, BCrypt.hashpw(password, BCrypt.gensalt())))
+          .map(addCount => addCount > 0)
+      else Future.successful(false)
+    }
   }
 
   def getDishes: Future[Seq[DishesRow]] = {
