@@ -3,7 +3,7 @@ package controllers
 import javax.inject._
 import play.api._
 import play.api.mvc._
-import models.UsersModel
+import models.Model
 import play.api.db.slick.{DatabaseConfigProvider, HasDatabaseConfigProvider}
 import slick.jdbc.JdbcProfile
 import slick.jdbc.PostgresProfile.api._
@@ -15,7 +15,7 @@ import scala.concurrent.{ExecutionContext, Future}
 class HomeController @Inject()(protected val dbConfigProvider: DatabaseConfigProvider, val controllerComponents: ControllerComponents)(implicit ec: ExecutionContext)
   extends BaseController with HasDatabaseConfigProvider[JdbcProfile] {
 
-  private val model = new UsersModel(db)
+  private val model = new Model(db)
 
   def index = Action { implicit request =>
     Ok(views.html.index())
