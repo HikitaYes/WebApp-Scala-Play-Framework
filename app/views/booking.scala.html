@@ -1,0 +1,31 @@
+@()(implicit request: RequestHeader, session: Session)
+
+@main("booking") {
+    <div class="background-img">
+        <img src="@routes.Assets.versioned("images/background2.jpg")" alt="background image">
+    </div>
+    <main class="main">
+        <div class="container">
+            <h1 class="title">Бронирование столиков</h1>
+<!--            <h2 class="welcome">Добро пожаловать, @session.get("username")!</h2>-->
+            <p class="welcome">Добро пожаловать, @session.get("username")!</p>
+            <div class="data">
+                <form action="/" method="post">
+                    <p>Укажите ваш телефон:</p>
+                    <input type="tel" name="phonenumber" value="" placeholder="+7 (xxx) xxx-xx-xx" pattern="[\+]\d{1}\s[\(]\d{3}[\)]\s\d{3}[\-]\d{2}[\-]\d{2}" minlength="18" maxlength="18" required="">
+
+                    <p>Выберите свободный столик:</p>
+                    <select name="table">
+                        <option>Стол №1</option>
+                        <option>Стол №2</option>
+                        <option>Стол №3</option>
+                        <option>Стол №4</option>
+                        <option>Стол №5</option>
+                        <option>Стол №6</option>
+                    </select>
+                    <input type="submit" name="">
+                </form>
+            </div>
+        </div>
+    </main>
+}

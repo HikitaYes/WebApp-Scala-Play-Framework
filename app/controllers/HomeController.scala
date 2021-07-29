@@ -62,4 +62,11 @@ class HomeController @Inject()(protected val dbConfigProvider: DatabaseConfigPro
   def logout = Action {
     Redirect(routes.HomeController.auth).withNewSession
   }
+
+  def booking = Action { implicit request =>
+    request.session.get("username").map { username =>
+
+      Ok(views.html.booking())
+    }.getOrElse(Redirect(routes.HomeController.auth).flashing("error" -> "Сначала войдите или зарегистрируйтесь"))
+  }
 }
