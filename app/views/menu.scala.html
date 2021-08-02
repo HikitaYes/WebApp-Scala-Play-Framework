@@ -3,6 +3,15 @@
 
 @main("menu") {
     <main class="main">
+        <div class="sorting">
+            Сортировать
+            <select id="sort-by" class="sort-by">
+                <option selected disabled hidden></option>
+                <option value="by price">по цене</option>
+                <option value="by gram">по весу</option>
+            </select>
+        </div>
+        <div id="test"></div>
         <ul class="foods">
             @for(dish <- dishes) {
                 <li class="food">
@@ -19,4 +28,6 @@
             }
         </ul>
     </main>
+
+    <script src="@routes.Assets.versioned("javascripts/main.js")"></script>
 }
