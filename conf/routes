@@ -1,6 +1,7 @@
 # Routes
 GET     /                           controllers.HomeController.index
 GET     /menu                       controllers.HomeController.menu
+GET     /dishes                     controllers.HomeController.dishes(sortBy: String)
 GET     /auth                       controllers.HomeController.auth
 GET     /booking                    controllers.HomeController.booking
 POST    /booking                    controllers.HomeController.bookingPost

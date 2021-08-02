@@ -25,10 +25,15 @@ class Model(db: Database)(implicit ec: ExecutionContext) {
     }
   }
 
-  def getDishes: Future[Seq[DishesRow]] = {
+  def getDishes(sortBy: String): Future[Seq[DishesRow]] = {
     db.run(
       (for {
-        dish <- Dishes
+        dish <- Dishes.sortBy(
+          sortBy match {
+            case "price" => _.price
+            case "gram" => _.gram
+            case _ => _.id
+        })
       } yield dish).result
     )
   }

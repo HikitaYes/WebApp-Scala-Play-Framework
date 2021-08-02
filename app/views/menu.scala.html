@@ -1,31 +1,17 @@
-@(dishes: Seq[Tables.DishesRow])(implicit session: Session)
+@()(implicit session: Session)
 
 
 @main("menu") {
     <main class="main">
         <div class="sorting">
             Сортировать
-            <select id="sort-by" class="sort-by">
+            <select class="sort-by" id="sort-by">
                 <option selected disabled hidden></option>
-                <option value="by price">по цене</option>
-                <option value="by gram">по весу</option>
+                <option value="price">по цене</option>
+                <option value="gram">по весу</option>
             </select>
         </div>
-        <div id="test"></div>
-        <ul class="foods">
-            @for(dish <- dishes) {
-                <li class="food">
-                    <img src="@routes.Assets.versioned(dish.imageSrc)" alt=@dish.name>
-                    <div class="info">
-                        <h1 class="name">@dish.name</h1>
-                        <h2 class="description">@dish.description</h2>
-                        <div class="wrap">
-                            <span class="gram">@dish.gram г</span>
-                            <span class="price">@dish.price р</span>
-                        </div>
-                    </div>
-                </li>
-            }
+        <ul class="foods" id="foods">
         </ul>
     </main>
 

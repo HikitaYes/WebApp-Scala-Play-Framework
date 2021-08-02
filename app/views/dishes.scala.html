@@ -1,0 +1,15 @@
+@(dishes: Seq[Tables.DishesRow])
+
+@for(dish <- dishes) {
+    <li class="food">
+        <img src="@routes.Assets.versioned(dish.imageSrc)" alt=@dish.name>
+        <div class="info">
+            <h1 class="name">@dish.name</h1>
+            <h2 class="description">@dish.description</h2>
+            <div class="wrap">
+                <span class="gram">@dish.gram г</span>
+                <span class="price">@dish.price р</span>
+            </div>
+        </div>
+    </li>
+}

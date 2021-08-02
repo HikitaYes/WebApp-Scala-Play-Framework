@@ -21,10 +21,14 @@ class HomeController @Inject()(protected val dbConfigProvider: DatabaseConfigPro
     Ok(views.html.index())
   }
 
-  def menu = Action.async { implicit request =>
-    model.getDishes.map(dishes =>
-      Ok(views.html.menu(dishes))
-    )
+  def menu() = Action { implicit request =>
+      Ok(views.html.menu())
+  }
+
+  def dishes(sortBy: String) = Action.async { implicit request =>
+    model.getDishes(sortBy).map(dishes => {
+      Ok(views.html.dishes(dishes))
+    })
   }
 
   def auth() = Action { implicit request =>
