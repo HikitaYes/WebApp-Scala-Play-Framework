@@ -1,12 +1,10 @@
 package controllers
 
 import javax.inject._
-import play.api._
 import play.api.mvc._
 import models.Model
 import play.api.db.slick.{DatabaseConfigProvider, HasDatabaseConfigProvider}
 import slick.jdbc.JdbcProfile
-import slick.jdbc.PostgresProfile.api._
 
 import scala.concurrent.{ExecutionContext, Future}
 
@@ -21,7 +19,7 @@ class HomeController @Inject()(protected val dbConfigProvider: DatabaseConfigPro
     Ok(views.html.index())
   }
 
-  def menu() = Action { implicit request =>
+  def menu = Action { implicit request =>
       Ok(views.html.menu())
   }
 
@@ -31,11 +29,11 @@ class HomeController @Inject()(protected val dbConfigProvider: DatabaseConfigPro
     })
   }
 
-  def about() = Action { implicit request =>
+  def about = Action { implicit request =>
     Ok(views.html.about())
   }
 
-  def auth() = Action { implicit request =>
+  def auth = Action { implicit request =>
     Ok(views.html.auth())
   }
 
