@@ -1,0 +1,55 @@
+.background-img img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.background-img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	width: 100%;
+	height: 100%;
+
+}
+.background-img:after {
+	display: block;
+	content: '';
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	background-color: rgba(0, 0, 0, 0.7);
+}
+
+.main {
+	font-family: "Gilroy Medium";
+	font-size: 22px;
+	letter-spacing: 1px;
+	color: white;
+
+	display: flex;
+	justify-content: center;
+
+}
+
+.main .container {
+	width: 600px;
+	margin-top: 20px;
+
+	display: flex;
+	justify-content: space-between;
+}
+.link img {
+	width: 25px;
+	vertical-align: middle;
+}
+.link a:link {
+	color: white;
+}
+.link a:visited {
+	color: lightgray;
+	text-decoration: none;
+}

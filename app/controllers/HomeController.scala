@@ -31,6 +31,10 @@ class HomeController @Inject()(protected val dbConfigProvider: DatabaseConfigPro
     })
   }
 
+  def about() = Action { implicit request =>
+    Ok(views.html.about())
+  }
+
   def auth() = Action { implicit request =>
     Ok(views.html.auth())
   }
