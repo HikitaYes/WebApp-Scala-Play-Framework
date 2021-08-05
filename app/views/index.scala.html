@@ -1,5 +1,17 @@
-@()
+@()(implicit session: Session)
 
-@main("Welcome to Play") {
-  <h1>Welcome to Play!</h1>
+@main("index") {
+    <div class="background-img">
+        <img src="@routes.Assets.versioned("images/background.jpg")" alt="background image">
+    </div>
+
+    <main class="main">
+        <div class="wrap-text">
+            <p>Лучший кабачок в своем роде!</p>
+            <p>Уникальное заведение города Екатеринбурга</p>
+            <p>Разнообразные блюда на любой вкус</p>
+            <p>Забронируй столик прямо сейчас</p>
+            <p>и убедись в этом сам!</p>
+        </div>
+    </main>
 }

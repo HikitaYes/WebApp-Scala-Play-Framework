@@ -1,0 +1,19 @@
+@()(implicit session: Session)
+
+
+@main("menu") {
+    <main class="main">
+        <div class="sorting">
+            Сортировать
+            <select class="sort-by" id="sort-by">
+                <option selected disabled hidden></option>
+                <option value="price">по цене</option>
+                <option value="gram">по весу</option>
+            </select>
+        </div>
+        <ul class="foods" id="foods">
+        </ul>
+    </main>
+
+    <script src="@routes.Assets.versioned("javascripts/main.js")"></script>
+}

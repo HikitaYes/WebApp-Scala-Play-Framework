@@ -1,0 +1,33 @@
+@font-face {
+	font-family: "A Love Of Thunder";
+	src: url("../fonts/ALoveOfThunder.ttf");
+}
+@font-face {
+	font-family: "Handelson Six CYR";
+	src: url("../fonts/Handelson Six_CYR.otf");
+}
+@font-face {
+	font-family: "Fulbo Argenta";
+	src: url("../fonts/Fulbo Argenta.otf");
+}
+@font-face {
+	font-family: "Pribambas Regular";
+	src: url("../fonts/Pribambas-Regular.ttf");
+}
+
+@font-face {
+	font-family: "Gilroy Regular";
+	src: url("../fonts/Gilroy-Regular.ttf");
+}
+@font-face {
+	font-family: "Gilroy Medium";
+	src: url("../fonts/Gilroy-Medium.ttf");
+}
+@font-face {
+	font-family: "Gilroy SemiBold";
+	src: url("../fonts/Gilroy-SemiBold.ttf");
+}
+@font-face {
+	font-family: "Gilroy Bold";
+	src: url("../fonts/Gilroy-Bold.ttf");
+}

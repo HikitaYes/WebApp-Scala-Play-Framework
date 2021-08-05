@@ -1,0 +1,40 @@
+.background-img img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.background-img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	width: 100%;
+	height: 100%;
+
+}
+.background-img:after {
+	display: block;
+	content: '';
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	background-color: rgba(0, 0, 0, 0.7);
+}
+
+.main {
+	font-family: "A Love Of Thunder", "Roboto", sans-serif;
+	font-size: 26px;
+	letter-spacing: 1px;
+	color: white;
+	text-align: center;
+	line-height: 40px;
+
+	height: 84%;
+	display: flex;
+}
+.main .wrap-text {
+	margin: auto;
+}
