@@ -56,10 +56,10 @@ class ComplexPagesAJAX_CSRF extends PlaySpec with GuiceOneServerPerSuite with On
 
     "give back expected menu page" in {
       go to s"http://localhost:9000/menu"
-      Thread.sleep(100)
-
-      find(className("sorting")).foreach(_.text mustBe "Сортировать")
-      findAll(className("foods")).foreach(_.text must include ("Стейк"))
+      eventually {
+        find(className("sorting")).foreach(_.text mustBe "Сортировать")
+        findAll(className("foods")).foreach(_.text must include("Стейк"))
+      }
     }
   }
 }
