@@ -15,6 +15,7 @@ libraryDependencies ++= Seq(
   "com.typesafe.slick" %% "slick-hikaricp" % "3.3.3",
   "com.typesafe.play" %% "play-slick-evolutions" % "5.0.0",
   "org.postgresql" % "postgresql" %"42.2.16",
+  "org.postgresql" % "postgresql" % "9.4-1201-jdbc41",
   "org.mindrot" % "jbcrypt" % "0.4"
 )
 
